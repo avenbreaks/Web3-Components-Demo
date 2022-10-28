@@ -81,7 +81,7 @@ const SearchERC20Transfers = () => {
   
   return(
     <div className="App" style={{ width: "100vw", padding: "25px" }}>
-      <FormControl placeholder="Enter an Ethereum wallet address or ENS" onSearch={onSearch} />
+      <FormControl placeholder="Enter an Ethereum wallet address or ENS domain" onSearch={onSearch} />
       <div>
         <br></br>
         <p><b>Provided Address:</b> {walletAddress}</p>
