@@ -103,9 +103,9 @@ function App() {
     <Router>
         <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
         <Routes>
-          <Route path="/" element={<SearchTokenBalances />} />
-          <Route path="/erc20Transfers" element={<SearchERC20Transfers />} />
-          <Route path="/tokenHolders" element={<SearchTokenHolders />} />
+          <Route path="/Wallet-Dashboard-Demo" element={<SearchTokenBalances />} />
+          <Route path="/Wallet-Dashboard-Demo/erc20Transfers" element={<SearchERC20Transfers />} />
+          <Route path="/Wallet-Dashboard-Demo/tokenHolders" element={<SearchTokenHolders />} />
         </Routes>
     </Router>
   );
