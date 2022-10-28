@@ -19,19 +19,19 @@ const FormControl = ({placeholder, onSearch}) => {
 const items = [
   {
     label: (
-      <Link to="/" relative="path">Token Balances</Link>
+      <Link to="/Wallet-Dashboard-Demo" relative="path">Token Balances</Link>
     ),
     key: 'tokenBalances',
   },
   {
     label: (
-      <Link to="/erc20Transfers" relative="path">ERC20 Transfers</Link>
+      <Link to="/Wallet-Dashboard-Demo/erc20Transfers" relative="path">ERC20 Transfers</Link>
     ),
     key: 'erc20Transfers'
   },
   {
     label: (
-      <Link to="/tokenHolders" relative="path">Token Holders</Link>
+      <Link to="/Wallet-Dashboard-Demo/tokenHolders" relative="path">Token Holders</Link>
     ),
     key: 'tokenHolders'
   }
