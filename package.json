@@ -1,7 +1,6 @@
 {
   "name": "wallet-dashboard-demo",
   "version": "0.1.0",
-  "private": true,
   "homepage": "https://covalenthq.github.io/Wallet-Dashboard-Demo",
   "dependencies": {
     "@covalenthq/web3-components": "^0.2.6",
