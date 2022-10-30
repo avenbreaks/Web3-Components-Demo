@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import { HashRouter, Routes, Route, Link} from "react-router-dom";
 import { Input, Menu } from 'antd';
 import './App.css';
 import { TokenBalances, ERC20Transfers, TokenHolders} from '@covalenthq/web3-components';
@@ -19,19 +19,19 @@ const FormControl = ({placeholder, onSearch}) => {
 const items = [
   {
     label: (
-      <Link to="/Wallet-Dashboard-Demo" relative="path">Token Balances</Link>
+      <Link to="/Web3-Components-Demo">Token Balances</Link>
     ),
     key: 'tokenBalances',
   },
   {
     label: (
-      <Link to="/Wallet-Dashboard-Demo/erc20Transfers" relative="path">ERC20 Transfers</Link>
+      <Link to="/Web3-Components-Demo/erc20Transfers">ERC20 Transfers</Link>
     ),
     key: 'erc20Transfers'
   },
   {
     label: (
-      <Link to="/Wallet-Dashboard-Demo/tokenHolders" relative="path">Token Holders</Link>
+      <Link to="/Web3-Components-Demo/tokenHolders">Token Holders</Link>
     ),
     key: 'tokenHolders'
   }
@@ -49,7 +49,7 @@ const SearchTokenBalances = () => {
       <div>
         <br></br>
         <p><b>Provided Address:</b> {address}</p>
-        <p><b>Set Chain Id:</b> {chainId}</p>
+        <p><b>Chain Id:</b> {chainId}</p>
         <TokenBalances address={address} chainId={chainId} />
       </div>
     </div>
@@ -67,6 +67,8 @@ const SearchTokenHolders = () => {
       <FormControl placeholder="Enter an Ethereum token (ERC20 or NFT) contract address" onSearch={onSearch} />
       <div>
         <br></br>
+        <p><b>Provided Address:</b> {tokenAddress}</p>
+        <p><b>Chain Id:</b> {chainId}</p>
         <TokenHolders tokenAddress={tokenAddress} chainId={chainId} />
       </div>
     </div>
@@ -81,11 +83,11 @@ const SearchERC20Transfers = () => {
   
   return(
     <div className="App" style={{ width: "100vw", padding: "25px" }}>
-      <FormControl placeholder="Enter an Ethereum wallet address or ENS domain" onSearch={onSearch} />
+      <FormControl placeholder="Enter an Ethereum wallet address or ENS" onSearch={onSearch} />
       <div>
         <br></br>
         <p><b>Provided Address:</b> {walletAddress}</p>
-        <p><b>Set Chain Id:</b> {chainId}</p>
+        <p><b>Chain Id:</b> {chainId}</p>
         <ERC20Transfers address={walletAddress} chainId={chainId} />
       </div>
     </div>
@@ -100,14 +102,14 @@ function App() {
   }
   
   return (
-    <Router>
+    <HashRouter>
         <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
         <Routes>
-          <Route path="/Wallet-Dashboard-Demo" element={<SearchTokenBalances />} />
-          <Route path="/Wallet-Dashboard-Demo/erc20Transfers" element={<SearchERC20Transfers />} />
-          <Route path="/Wallet-Dashboard-Demo/tokenHolders" element={<SearchTokenHolders />} />
+          <Route path="/Web3-Components-Demo" element={<SearchTokenBalances />} />
+          <Route path="/Web3-Components-Demo/erc20Transfers" element={<SearchERC20Transfers />} />
+          <Route path="/Web3-Components-Demo/tokenHolders" element={<SearchTokenHolders />} />
         </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 

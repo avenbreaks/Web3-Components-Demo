@@ -1,8 +1,8 @@
-# Wallet Dashboard Demo
+# Web3 Components Demo
 
-**Live demo:** https://covalenthq.github.io/Wallet-Dashboard-Demo
+**Live demo:** https://covalenthq.github.io/Web3-Components-Demo
 
-This Wallet Dashboard is a working demo of the `<TokenBalances />` React component, which provides a complete and paginated balances table with all the ERC20 tokens and NFTs for a given wallet address and chainId.
+This is a working demo of the `<TokenBalances />` React component, which provides a complete and paginated balances table with all the ERC20 tokens and NFTs for a given wallet address and chainId.
 
 ![Token Balances RC Demo](./public/token-balances-rc-demo.gif)
 
