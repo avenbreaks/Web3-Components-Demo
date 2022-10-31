@@ -2,60 +2,38 @@
 
 **Live demo:** https://covalenthq.github.io/Web3-Components-Demo
 
-This is a working demo of the `<TokenBalances />` React component, which provides a complete and paginated balances table with all the ERC20 tokens and NFTs for a given wallet address and chainId.
+This is a live demo of the [Web3 Components Library](https://github.com/covalenthq/web3-components) powered by the [Covalent Unified API](https://www.covalenthq.com/?utm_source=web3_components&utm_medium=docs) and built using the `create-react-app` framework.
 
-![Token Balances RC Demo](./public/token-balances-rc-demo.gif)
+## Quick start
 
-The `<TokenBalances />` React component can be found in the Covalent [web3 components library](https://github.com/covalenthq/web3-resources/tree/main/components).
+### Local development
+1. Click _Use this template_ to fork this repo.
+2. Create an `.env` file in the project folder and set the variable: `REACT_APP_COVALENT_API_KEY`=[Your Covalent API Key](https://www.covalenthq.com/platform/)
+3. Run `npm start`
 
-The Wallet Dashboard demonstrates how to use the `<TokenBalances />` component in either a web3 or web2 setting:
-
-- **Web3 Wallet:** The wallet address and blockchain network `chainId` are taken from the connected wallet provider such as MetaMask to display the token balances. This is for integrating a wallet dashboard into a DApp. 
 &nbsp;
-- **Web2 Wallet:** The wallet address and blockchain network `chainId` are *manually* entered to display the token balances. This is for apps such as taxation tools. 
+### Deploy to GitHub Pages
+1. Click _Use this template_ to fork this repo. **Make sure to select: _Include all branches_**. 
+2. Under _Settings -> Secrets -> Actions_, click _New repository secret_
 
-## Build details
+    ![Add new repo secret](./public/new-repo-secret.png)
 
-This Wallet Dashboard demo is built using the `create-react-app` framework and the `<TokenBalances />` React component powered by the [Covalent Unified API](https://covalenthq.com/docs/api).
+3. Add your Covalent API key as the secret with the name: `REACT_APP_COVALENT_API_KEY`
+    ![Add Covalent API key](./public/covalent-api-key-secret.png)
 
-### Installation
+4. Go to your `package.json` and update the `"homepage"` URL value to include your username and repository name: `"https://<username>.github.io/<repository-name>"`. Commit changes to the `main` branch. 
+    ![Update homepage URL](./public/update-homepage.png)
 
-Install with npm: `npm install @covalenthq/web3-components`
+5. When the automatic GitHub page build workflow is completed, visit your homepage URL to see the Web3 Components Demo app running on your GitHub page. 
+    ![GitHub pages deploy](./public/github-pages-deploy.png)
 
-or
+6. Use this template to customize your app using these web3 components!
+    ![demo app screenshot](./public/demo-app.png)
 
-Install with yarn: `yarn install @covalenthq/web3-components`
 
-### Usage
+Please refer to the [API reference](https://www.covalenthq.com/docs/api/#/0/0/USD/1?utm_source=web3_components_demo&utm_medium=docs) for documentation on how the Covalent Unified API works.
 
-The `<TokenBalances />` component provides a complete and paginated balances table with all the ERC20 tokens and NFTs for a given wallet `address` and `chainId`.
-
-#### Props:
-- `apikey`
-- `address`
-- `chainId`
-
-The Covalent API Key can be obtained at: https://www.covalenthq.com/platform
-
-#### Sample code:
-```jsx
-import { TokenBalances } from '@covalenthq/web3-components';
-
-function App() {
-  return(
-    <div className="TokenBalances">
-      <TokenBalances 
-        apikey={process.env.REACT_APP_COVALENT_API_KEY} 
-        address="demo.eth" 
-        chainId="1" 
-      />
-    </div>
-  )
-}
-
-export default App;
-```
-
+&nbsp;
 ## Feedback & Support
 We love our community and want to help *everyone* build in web3 :muscle:
 

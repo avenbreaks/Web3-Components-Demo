@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { HashRouter, Routes, Route, Link} from "react-router-dom";
-import { Input, Menu } from 'antd';
+import { Input, Menu, Switch } from 'antd';
 import './App.css';
 import { TokenBalances, ERC20Transfers, TokenHolders} from '@covalenthq/web3-components';
 
@@ -19,19 +19,19 @@ const FormControl = ({placeholder, onSearch}) => {
 const items = [
   {
     label: (
-      <Link to="/Web3-Components-Demo">Token Balances</Link>
+      <Link to="/">Token Balances</Link>
     ),
     key: 'tokenBalances',
   },
   {
     label: (
-      <Link to="/Web3-Components-Demo/erc20Transfers">ERC20 Transfers</Link>
+      <Link to="/erc20Transfers">ERC20 Transfers</Link>
     ),
     key: 'erc20Transfers'
   },
   {
     label: (
-      <Link to="/Web3-Components-Demo/tokenHolders">Token Holders</Link>
+      <Link to="/tokenHolders">Token Holders</Link>
     ),
     key: 'tokenHolders'
   }
@@ -105,9 +105,9 @@ function App() {
     <HashRouter>
         <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
         <Routes>
-          <Route path="/Web3-Components-Demo" element={<SearchTokenBalances />} />
-          <Route path="/Web3-Components-Demo/erc20Transfers" element={<SearchERC20Transfers />} />
-          <Route path="/Web3-Components-Demo/tokenHolders" element={<SearchTokenHolders />} />
+          <Route path="/" element={<SearchTokenBalances />} />
+          <Route path="/erc20Transfers" element={<SearchERC20Transfers />} />
+          <Route path="/tokenHolders" element={<SearchTokenHolders />} />
         </Routes>
     </HashRouter>
   );
