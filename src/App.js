@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HashRouter, Routes, Route, Link} from "react-router-dom";
 import { Input, Menu, Switch } from 'antd';
 import './App.css';
-import { TokenBalances, ERC20Transfers, TokenHolders} from '@covalenthq/web3-components';
+import { TokenBalances, ERC20Transfers, TokenHolders, Transactions} from '@covalenthq/web3-components';
 
 const { Search } = Input;
 
@@ -34,6 +34,12 @@ const items = [
       <Link to="/tokenHolders">Token Holders</Link>
     ),
     key: 'tokenHolders'
+  },
+  {
+    label: (
+      <Link to="/transactions">Transactions</Link>
+    ),
+    key: 'transactions'
   }
 ]
 
@@ -94,6 +100,25 @@ const SearchERC20Transfers = () => {
   )
 }
 
+const SearchTransactions = () => {
+  const [walletAddress, setWalletAddress] = useState(null)
+  const [chainId, setChainId] = useState(1)
+
+  const onSearch = (value) => setWalletAddress(value);
+  
+  return(
+    <div className="App" style={{ width: "100vw", padding: "25px" }}>
+      <FormControl placeholder="Enter an Ethereum wallet address or ENS" onSearch={onSearch} />
+      <div>
+        <br></br>
+        <p><b>Provided Address:</b> {walletAddress}</p>
+        <p><b>Chain Id:</b> {chainId}</p>
+        <Transactions address={walletAddress} chainId={chainId} />
+      </div>
+    </div>
+  )
+}
+
 function App() {
   const [current, setCurrent] = useState('tokenBalances')
 
@@ -108,6 +133,7 @@ function App() {
           <Route path="/" element={<SearchTokenBalances />} />
           <Route path="/erc20Transfers" element={<SearchERC20Transfers />} />
           <Route path="/tokenHolders" element={<SearchTokenHolders />} />
+          <Route path="/transactions" element={<SearchTransactions />} />
         </Routes>
     </HashRouter>
   );
