@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { HashRouter, Routes, Route, Link} from "react-router-dom";
-import { Input, Menu, Switch } from 'antd';
-import './App.css';
-import { TokenBalances, ERC20Transfers, TokenHolders, Transactions} from '@covalenthq/web3-components';
+import React, { useState } from "react"
+import { HashRouter, Routes, Route, Link} from "react-router-dom"
+import { Input, Menu, Switch } from 'antd'
+import './App.css'
+import { TokenBalances, ERC20Transfers, TokenHolders, Transactions, ChainSelector} from '@covalenthq/web3-components'
 
-const { Search } = Input;
+const { Search } = Input
 
 const FormControl = ({placeholder, onSearch}) => {
   return (
@@ -45,18 +45,21 @@ const items = [
 
 const SearchTokenBalances = () => {
   const [address, setAddress] = useState(null)
-  const [chainId, setChainId] = useState(1)
+  const [chainName, setChainName] = useState('eth-mainnet')
 
   const onSearch = (value) => setAddress(value);
   
   return(
     <div className="App" style={{ width: "100vw", padding: "25px" }}>
-      <FormControl placeholder="Enter an Ethereum wallet address or ENS" onSearch={onSearch} />
+      <div>
+        <ChainSelector setChainName={setChainName} />
+        <FormControl placeholder="Enter a wallet address or ENS domain (only if Ethereum selected)" onSearch={onSearch} />
+      </div>
       <div>
         <br></br>
         <p><b>Provided Address:</b> {address}</p>
-        <p><b>Chain Id:</b> {chainId}</p>
-        <TokenBalances address={address} chainId={chainId} />
+        <p><b>Chain:</b> {chainName}</p>
+        <TokenBalances address={address} chainId={chainName} />
       </div>
     </div>
   )
@@ -64,18 +67,21 @@ const SearchTokenBalances = () => {
 
 const SearchTokenHolders = () => {
   const [tokenAddress, setTokenAddress] = useState(null)
-  const [chainId, setChainId] = useState(1)
+  const [chainName, setChainName] = useState('eth-mainnet')
 
   const onSearch = (value) => setTokenAddress(value);
   
   return(
     <div className="App" style={{ width: "100vw", padding: "25px" }}>
-      <FormControl placeholder="Enter an Ethereum token (ERC20 or NFT) contract address" onSearch={onSearch} />
+      <div>
+        <ChainSelector setChainName={setChainName} />
+        <FormControl placeholder="Enter a token (ERC20 or NFT) contract address" onSearch={onSearch} />
+      </div>
       <div>
         <br></br>
         <p><b>Provided Address:</b> {tokenAddress}</p>
-        <p><b>Chain Id:</b> {chainId}</p>
-        <TokenHolders tokenAddress={tokenAddress} chainId={chainId} />
+        <p><b>Chain:</b> {chainName}</p>
+        <TokenHolders tokenAddress={tokenAddress} chainId={chainName} />
       </div>
     </div>
   )
@@ -83,18 +89,21 @@ const SearchTokenHolders = () => {
 
 const SearchERC20Transfers = () => {
   const [walletAddress, setWalletAddress] = useState(null)
-  const [chainId, setChainId] = useState(1)
+  const [chainName, setChainName] = useState('eth-mainnet')
 
   const onSearch = (value) => setWalletAddress(value);
   
   return(
     <div className="App" style={{ width: "100vw", padding: "25px" }}>
-      <FormControl placeholder="Enter an Ethereum wallet address or ENS" onSearch={onSearch} />
+      <div>
+        <ChainSelector setChainName={setChainName} />
+        <FormControl placeholder="Enter a wallet address or ENS domain (only if Ethereum selected)" onSearch={onSearch} />
+      </div>
       <div>
         <br></br>
         <p><b>Provided Address:</b> {walletAddress}</p>
-        <p><b>Chain Id:</b> {chainId}</p>
-        <ERC20Transfers address={walletAddress} chainId={chainId} />
+        <p><b>Chain:</b> {chainName}</p>
+        <ERC20Transfers address={walletAddress} chainId={chainName} />
       </div>
     </div>
   )
@@ -102,18 +111,21 @@ const SearchERC20Transfers = () => {
 
 const SearchTransactions = () => {
   const [walletAddress, setWalletAddress] = useState(null)
-  const [chainId, setChainId] = useState(1)
+  const [chainName, setChainName] = useState('eth-mainnet')
 
   const onSearch = (value) => setWalletAddress(value);
   
   return(
     <div className="App" style={{ width: "100vw", padding: "25px" }}>
-      <FormControl placeholder="Enter an Ethereum wallet address or ENS" onSearch={onSearch} />
+      <div>
+        <ChainSelector setChainName={setChainName} />
+        <FormControl placeholder="Enter a wallet address or ENS domain (only if Ethereum selected)" onSearch={onSearch} />
+      </div>
       <div>
         <br></br>
         <p><b>Provided Address:</b> {walletAddress}</p>
-        <p><b>Chain Id:</b> {chainId}</p>
-        <Transactions address={walletAddress} chainId={chainId} />
+        <p><b>Chain:</b> {chainName}</p>
+        <Transactions address={walletAddress} chainId={chainName} />
       </div>
     </div>
   )
@@ -136,7 +148,7 @@ function App() {
           <Route path="/transactions" element={<SearchTransactions />} />
         </Routes>
     </HashRouter>
-  );
+  )
 }
 
-export default App;
+export default App
